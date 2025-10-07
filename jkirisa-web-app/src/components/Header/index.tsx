@@ -17,7 +17,7 @@ export const AppHeader = () => {
                 <nav className="navbar">
                     <div className="navbar-logo">
                         <NavLink to="/" className="navbar-item">
-                            REACT TS
+                            One Summer's Day
                         </NavLink>
                     </div>
                     <div className="navbar-menu">
