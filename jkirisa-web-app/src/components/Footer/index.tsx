@@ -5,8 +5,8 @@ import {
 import { BackTop } from 'antd';
 
 export const AppFooter = () => {
-    return(
-        <div> className="footer"
+    return (
+        <div className="footer">
             <div className="container">
                 <div className="footer-inner">
                     <div className="footer-logo">
