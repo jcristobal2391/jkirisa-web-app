@@ -1,6 +1,6 @@
 import React from 'react';
 import { Home } from 'src/components/Home';
-import { PageLayout } from 'src/pages/layouts/PageLayout';
+import { PageLayout } from 'src/pages/Layouts/PageLayout';
 
 const _HomePage = () => {
     return (

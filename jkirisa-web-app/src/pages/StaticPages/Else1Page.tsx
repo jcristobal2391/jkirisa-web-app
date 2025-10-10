@@ -1,6 +1,6 @@
 import React from 'react';
 import { ElsewhereOption1 } from 'src/components/StaticPages/FromElsewhere.option.1';
-import { PageLayout } from 'src/pages/layouts/PageLayout';
+import { PageLayout } from 'src/pages/Layouts/PageLayout';
 
 const _Else1 = () => {
     return (

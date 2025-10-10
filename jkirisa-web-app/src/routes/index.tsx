@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { PATH } from 'src/constants/paths';
 import { Loading } from "src/components/Loading";
-import { MainLayout } from "src/pages/layouts/MainLayout";
+import { MainLayout } from "src/pages/Layouts/MainLayout";
 import { Helmet, HelmetProvider } from "react-helmet";
 
 //Static
