@@ -1,6 +1,6 @@
 import React from 'react';
 import { AshenOption2 } from 'src/components/StaticPages/FromAshen.option.2';
-import { PageLayout } from 'src/pages/layouts/PageLayout';
+import { PageLayout } from 'src/pages/Layouts/PageLayout';
 
 const _Ashen2 = () => {
     return (

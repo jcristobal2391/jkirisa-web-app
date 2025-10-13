@@ -2,8 +2,8 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { PATH } from 'src/constants/paths';
 import { Loading } from "src/components/Loading";
-import { MainLayout } from "src/pages/layouts/MainLayout";
-import { Helmet, HelmetProvider } from "react-helmet";
+import { MainLayout } from "src/pages/Layouts/MainLayout";
+import { Helmet} from "react-helmet";
 
 //Static
 const HomePage = lazy(() => import('src/pages/HomePages/HomePage'));
@@ -14,21 +14,18 @@ const Else1Page = lazy(() => import('src/pages/StaticPages/Else1Page'));
 
 const NotFoundPage = lazy(() => import('src/pages/ErrorPages/404Pages'));
 
-const helmetContext = {};
 
 export const AppRoutes = () => {
     return (
         <BrowserRouter>
-            <HelmetProvider context={helmetContext}>
-                <Helmet>
-                    <meta charSet="utf-8" />
-                    <title>JKirisame</title>
-                    <link 
-                        rel="canonical" 
-                        href="http://jkirisa.me/" 
-                    />
-                </Helmet>
-            </HelmetProvider>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>JKirisame</title>
+                <link 
+                    rel="canonical" 
+                    href="http://jkirisa.me/" 
+                />
+            </Helmet>
 
             <MainLayout>
                 <Suspense fallback={<Loading />}>

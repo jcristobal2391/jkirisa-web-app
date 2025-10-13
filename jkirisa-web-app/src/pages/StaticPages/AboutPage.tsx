@@ -1,6 +1,6 @@
 import React from 'react';
 import { About } from 'src/components/StaticPages/About';
-import { PageLayout } from 'src/pages/layouts/PageLayout';
+import { PageLayout } from 'src/pages/Layouts/PageLayout';
 
 const _AboutPage = () => {
     return (
