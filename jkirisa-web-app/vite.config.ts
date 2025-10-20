@@ -9,5 +9,13 @@ export default defineConfig({
     alias: {
       'src': path.resolve('./src')
     }
+  },
+  server: {
+    watch: {
+      usePolling: true
+    },
+    host: true,
+    strictPort: true,
+    port: 5173
   }
 })
