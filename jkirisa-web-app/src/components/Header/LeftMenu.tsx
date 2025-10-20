@@ -33,11 +33,6 @@ export const LeftMenu = () => {
             About
             </NavLink>
         </Menu.Item>
-        <Menu.Item key="key-contact">
-            <NavLink className="navbar-item" to="/contact">
-            Contact
-            </NavLink>
-        </Menu.Item>
         </Menu>
     );
 }
