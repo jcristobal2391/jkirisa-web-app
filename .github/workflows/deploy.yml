@@ -18,8 +18,8 @@ jobs:
       - name: Log in to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
         with:
-          aws_region: ${{vars.AWS_REGION}}
           mask-password: true
+          registries: ${{vars.REPO_URI}}
 
       - name: Build and tag Docker image
         env:
