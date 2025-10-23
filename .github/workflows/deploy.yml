@@ -29,6 +29,7 @@ jobs:
         env:
           REPO_URI: ${{vars.REPO_URI}}
         run: |
+          cd ./jkirisa-web-app
           docker build -t $REPO_URI:latest .
           docker tag $REPO_URI:latest $REPO_URI:${{ github.sha }}
 
