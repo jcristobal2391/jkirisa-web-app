@@ -24,8 +24,6 @@ jobs:
 
       - name: Log in to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v2
-        with:
-          registries: ${{vars.REPO_URI}}
 
       - name: Build and tag Docker image
         env:
