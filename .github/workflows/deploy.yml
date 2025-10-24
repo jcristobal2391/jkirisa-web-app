@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - develop  # Run this workflow on every push to the develop branch
-      - feature/setup-GHA
 
 jobs:
   deploy:
