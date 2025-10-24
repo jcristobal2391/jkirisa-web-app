@@ -1,0 +1,49 @@
+name: Deploy to AWS ECS
+
+on:
+  push:
+    branches:
+      - develop  # Run this workflow on every push to the develop branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: dev
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_ACCESS_SECRET }}
+          aws-region: ${{vars.AWS_REGION}}
+
+      - name: Log in to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and tag Docker image
+        env:
+          REPO_URI: ${{vars.REPO_URI}}
+        run: |
+          cd ./jkirisa-web-app
+          docker build -t $REPO_URI:latest .
+          docker tag $REPO_URI:latest $REPO_URI:${{ github.sha }}
+
+      - name: Push to Amazon ECR
+        env:
+          REPO_URI: ${{vars.REPO_URI}}
+        run: |
+          docker push $REPO_URI:latest
+          docker push $REPO_URI:${{ github.sha }}
+
+      - name: Deploy to Amazon ECS
+        env:
+          AWS_REGION: ${{vars.AWS_REGION}}
+          CLUSTER: ${{vars.ECS_CLUSTER_NAME}}
+          SERVICE: ${{vars.ECS_SERVICE_NAME}}
+          IMAGE_URI: ${{vars.REPO_URI}}:${{ github.sha }}
+        run: |
+          aws ecs update-service --cluster $CLUSTER --service $SERVICE --force-new-deployment --region $AWS_REGION
