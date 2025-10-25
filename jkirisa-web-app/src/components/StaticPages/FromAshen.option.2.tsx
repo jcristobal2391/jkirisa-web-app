@@ -1,4 +1,5 @@
-
+import SinglePagePDFViewer from 'src/components/PDF/single-page'
+import witchPDF from 'public/stories/witches.pdf'
 
 export const AshenOption2 = () => {
     return (
@@ -21,6 +22,8 @@ export const AshenOption2 = () => {
                         will be found family, some new faces, some old, magic, and 
                         wonder
                     </p>
+                    <h4>The Witch War</h4>
+                    <SinglePagePDFViewer pdf={witchPDF} />
                 </div>
             </div>
         </div>
