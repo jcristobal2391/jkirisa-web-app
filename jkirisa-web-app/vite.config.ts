@@ -7,9 +7,11 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      'src': path.resolve('./src')
+      'src': path.resolve('./src'),
+      'public': path.resolve('./public')
     }
   },
+  assetsInclude: ['**/*.pdf'],
   server: {
     watch: {
       usePolling: true
