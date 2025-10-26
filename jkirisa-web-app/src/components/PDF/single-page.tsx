@@ -1,5 +1,22 @@
 import { useState } from 'react';
-import { Document, Page } from 'react-pdf';
+import { Document, Page, pdfjs} from 'react-pdf';
+
+import 'src/assets/styles.css'
+
+// import type { PDFDocumentProxy } from 'pdfjs-dist';
+
+// pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+//   'pdfjs-dist/build/pdf.worker.min.mjs',
+//   import.meta.url,
+// ).toString();
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+
+const options = {
+    cMapUrl: 'cmaps/',
+    standardFontDataUrl: 'standard_fonts/',
+    wasmUrl: '/wasm/',
+}
 
 export default function SinglePage(props) {
     const [numPages, setNumPages] = useState(null);
@@ -26,12 +43,6 @@ export default function SinglePage(props) {
 
     return (
         <>
-            <Document
-                file={pdf}
-                onLoadSuccess={onDocumentLoadSuccess}
-            >
-                <Page pageNumber={pageNumber} />
-            </Document>
             <div>
                 <p>
                     Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
@@ -47,6 +58,13 @@ export default function SinglePage(props) {
                     Next
                 </button>
             </div>
+            <Document
+                file={pdf}
+                options={options}
+                onLoadSuccess={onDocumentLoadSuccess}
+            >
+                <Page pageNumber={pageNumber} renderTextLayer={false} renderAnnotationLayer={false}/>
+            </Document>
         </>
     )
 }

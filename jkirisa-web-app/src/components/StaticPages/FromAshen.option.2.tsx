@@ -1,5 +1,6 @@
 import SinglePagePDFViewer from 'src/components/PDF/single-page'
-import witchPDF from 'public/stories/witches.pdf'
+
+const witchPDF = '/stories/witches.pdf'
 
 export const AshenOption2 = () => {
     return (
