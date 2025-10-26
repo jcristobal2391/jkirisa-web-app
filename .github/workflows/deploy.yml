@@ -59,4 +59,4 @@ jobs:
           IMAGE_URI: ${{vars.REPO_URI}}:${{ github.sha }}
           TASK_FAMILY: ${{vars.ECS_TASK_FAMILY}}
         run: |
-          aws ecs update-service --cluster $CLUSTER --service $SERVICE --force-new-deployment --task-definition $TASK_FAMILY:latest --region $AWS_REGION
+          aws ecs update-service --cluster $CLUSTER --service $SERVICE --force-new-deployment --task-definition $TASK_FAMILY --region $AWS_REGION
