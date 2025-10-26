@@ -1,4 +1,6 @@
+import SinglePagePDFViewer from 'src/components/PDF/single-page'
 
+const waitPDF = '/stories/waiting.pdf'
 
 export const ElsewhereOption1 = () => {
     return (
@@ -26,6 +28,8 @@ export const ElsewhereOption1 = () => {
                         waited and waited. This story explores her story, as 
                         someone who isn't the hero.
                     </p>
+                    <h4>Waiting for Her, Waiting for Him</h4>
+                    <SinglePagePDFViewer pdf={waitPDF} />
                 </div>
             </div>
         </div>
