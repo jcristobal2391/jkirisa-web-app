@@ -7,13 +7,16 @@ const Home = () => {
                 </div>
                 <div className="about-content">
                     <p>
-                        lorem ipsum, a lot of words
+                        Welcome to jkirisa.me, the home of my stories and writings.
                     </p>
                     <p>
-                        lorem ipsum, al ot of wrodas two
+                        People often ask me, what do you do on the weekends? It's this. It's always this.
                     </p>
                     <p>
-                        lorem ipsum, et. el
+                        Most stories are often "trunk stories", in that they exist just to exist and are not 
+                        meant to be published. Many of these stories are trunk stories, experiments, and just 
+                        funky stuff. All of them are first or second drafts. If that interests you, check out 
+                        the stories tab!
                     </p>
                 </div>
             </div>
