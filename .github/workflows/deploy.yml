@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - develop  # Run this workflow on every push to the develop branch
+      - fix/*
 
 jobs:
   deploy:
@@ -48,7 +49,7 @@ jobs:
           TASK_DEF_JSON=$(aws ecs describe-task-definition --task-definition $TASK_FAMILY --region $AWS_REGION)
           NEW_TASK_DEF_JSON=$(echo $TASK_DEF_JSON | jq --arg IMAGE_URI "$REPO_URI:${{ github.sha }}" '.taskDefinition | .containerDefinitions[0].image = $IMAGE_URI | { family: .family, networkMode: .networkMode, containerDefinitions: .containerDefinitions, requiresCompatibilities: .requiresCompatibilities, cpu: .cpu, memory: .memory }')
           echo "$NEW_TASK_DEF_JSON" > new-task-def.json
-          aws ecs register-task-definition --cli-input-json file://new-task-def.json --region $AWS_REGION
+          aws ecs register-task-definition --cli-input-json file://new-task-def.json --region $AWS_REGION --execution-role-arn arn:aws:iam::033557458086:role/ecsTaskExecutionRole
 
       - name: Deploy to Amazon ECS
         env:
@@ -58,4 +59,4 @@ jobs:
           IMAGE_URI: ${{vars.REPO_URI}}:${{ github.sha }}
           TASK_FAMILY: ${{vars.ECS_TASK_FAMILY}}
         run: |
-          aws ecs update-service --cluster $CLUSTER --service $SERVICE --force-new-deployment --task-definition $TASK_FAMILY:latest --region $AWS_REGION
+          aws ecs update-service --cluster $CLUSTER --service $SERVICE --force-new-deployment --task-definition $TASK_FAMILY --region $AWS_REGION
